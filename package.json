@@ -1,0 +1,16 @@
+{
+  "name": "civil-automation-hub",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "npm run dev -w @civil/web",
+    "build": "npm run build -w @civil/web",
+    "typecheck": "tsc -b packages/core packages/tool-sdk packages/platform packages/runner packages/excel packages/tool-borehole packages/tool-culvert-gl && npm run typecheck -w @civil/web",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}

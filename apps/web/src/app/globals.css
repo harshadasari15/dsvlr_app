@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+/* Design tokens. Dark values apply with the OS setting unless the user picked
+   a theme explicitly via the toggle (data-theme). */
+:root {
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --surface-2: #f0f3f9;
+  --text: #0f172a;
+  --muted: #5b677a;
+  --border: #e2e8f0;
+  --accent: #2456e6;
+  --accent-2: #0ea5c6;
+  --accent-contrast: #ffffff;
+  --accent-soft: #e8efff;
+  --ok-bg: #dcf5e6;
+  --ok-fg: #14532d;
+  --warn-bg: #fff1cf;
+  --warn-fg: #6b4400;
+  --err-bg: #fde4e4;
+  --err-fg: #7f1d1d;
+  --info-bg: #e2eeff;
+  --info-fg: #1e3a8a;
+  --shadow: 0 1px 2px rgb(15 23 42 / 0.05), 0 8px 24px -12px rgb(15 23 42 / 0.15);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b1020;
+    --surface: #131a2e;
+    --surface-2: #1a2340;
+    --text: #e8edf7;
+    --muted: #9aa8c2;
+    --border: #25304f;
+    --accent: #6c93ff;
+    --accent-2: #38c7e6;
+    --accent-contrast: #0b1020;
+    --accent-soft: #1b2850;
+    --ok-bg: #12331f;
+    --ok-fg: #8be0ab;
+    --warn-bg: #3a2c0c;
+    --warn-fg: #f6d27a;
+    --err-bg: #3e1717;
+    --err-fg: #fba8a8;
+    --info-bg: #14264d;
+    --info-fg: #a9c4ff;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -12px rgb(0 0 0 / 0.6);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0b1020;
+  --surface: #131a2e;
+  --surface-2: #1a2340;
+  --text: #e8edf7;
+  --muted: #9aa8c2;
+  --border: #25304f;
+  --accent: #6c93ff;
+  --accent-2: #38c7e6;
+  --accent-contrast: #0b1020;
+  --accent-soft: #1b2850;
+  --ok-bg: #12331f;
+  --ok-fg: #8be0ab;
+  --warn-bg: #3a2c0c;
+  --warn-fg: #f6d27a;
+  --err-bg: #3e1717;
+  --err-fg: #fba8a8;
+  --info-bg: #14264d;
+  --info-fg: #a9c4ff;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -12px rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-accent-soft: var(--accent-soft);
+  --font-sans: var(--font-inter), system-ui, "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter), system-ui, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle engineering-paper grid behind the hero. */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--border) 70%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--border) 70%, transparent) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse at 50% 0%, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 30%, transparent 75%);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  box-shadow: 0 6px 16px -6px color-mix(in srgb, var(--accent) 70%, transparent);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px -8px color-mix(in srgb, var(--accent) 80%, transparent);
+}
+.btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fade-up {
+  animation: fade-up 0.35s ease both;
+}

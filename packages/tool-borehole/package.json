@@ -1,0 +1,16 @@
+{
+  "name": "@civil/tool-borehole",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "dependencies": {
+    "@civil/core": "*",
+    "@civil/tool-sdk": "*"
+  },
+  "devDependencies": {
+    "@civil/excel": "*",
+    "saxes": "^5.0.1"
+  }
+}

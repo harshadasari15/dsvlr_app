@@ -1,0 +1,9 @@
+node_modules
+.next
+dist
+*.tsbuildinfo
+.env
+.env.local
+.netlify
+# Project data used for local golden tests (client survey data; not for the repository)
+packages/*/fixtures/

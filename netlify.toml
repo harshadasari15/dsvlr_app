@@ -1,0 +1,14 @@
+# Netlify build settings for the Next.js app in apps/web (npm workspaces monorepo).
+# Environment variables (NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY,
+# NEXT_PUBLIC_PLATFORM_DRIVER) are set in the Netlify UI, not in this file.
+
+[build]
+  command = "npm run build"
+  publish = "apps/web/.next"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
