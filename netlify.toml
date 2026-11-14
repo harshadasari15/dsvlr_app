@@ -9,6 +9,10 @@
 [build.environment]
   NODE_VERSION = "22"
   NEXT_TELEMETRY_DISABLED = "1"
+  # These NEXT_PUBLIC_* values are public by design (Next.js inlines them into the browser bundle),
+  # so Netlify's secrets scanner must not fail the build when it finds them in the output.
+  # Never put the Supabase service_role key in any environment variable of this site.
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_PLATFORM_DRIVER,NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"

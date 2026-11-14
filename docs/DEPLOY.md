@@ -8,6 +8,8 @@
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY` – the anon / publishable key
    - `NEXT_PUBLIC_PLATFORM_DRIVER` – `supabase`
    These are public values (they end up in the browser bundle). Never add the `service_role` key.
+   `netlify.toml` already tells Netlify's secrets scanner to ignore these three (`SECRETS_SCAN_OMIT_KEYS`), because
+   they are meant to appear in the browser bundle. Without that the build fails with "Secrets scanning found secrets".
 5. **Deploy.** Note the site URL (`https://<name>.netlify.app`).
 6. **Supabase → Authentication → URL Configuration:** set *Site URL* to the Netlify URL and add
    `https://<name>.netlify.app/**` to *Redirect URLs* (email-confirmation links return there).
